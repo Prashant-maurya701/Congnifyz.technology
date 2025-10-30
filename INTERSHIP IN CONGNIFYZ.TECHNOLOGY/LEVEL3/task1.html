@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 Task 1: Image Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: rgb(240, 33, 33);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Image Gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .thumbnail {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #ff6b6b;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal:target {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Image Slideshow */
+        .slideshow {
+            position: relative;
+            max-width: 600px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides {
+            display: flex;
+            width: 400%;
+            /* 4 images */
+            animation: slide 12s infinite;
+        }
+
+        .slide {
+            width: 25%;
+            /* 100% / 4 */
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .slide .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-75%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .task-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Level 3 Task 1: Image Manipulation</h1>
+
+    <div class="task-section">
+        <h2>Task 1: Image Gallery with Enlarging Thumbnails</h2>
+        <p>Click on any thumbnail below to enlarge the image. Click the '×' to close.</p>
+        <div class="gallery">
+            <img src="image1.jpg" alt="Image 1" class="thumbnail" onclick="openModal(this.src)">
+            <img src="image2.jpg" alt="Image 2" class="thumbnail" onclick="openModal(this.src)">
+            <img src="image3.jpg" alt="Image 3" class="thumbnail" onclick="openModal(this.src)">
+            <img src="image4.png" alt="Image 4" class="thumbnail" onclick="openModal(this.src)">
+        </div>
+    </div>
+
+    <div class="task-section">
+        <h2>Task 2: Automatic Image Slideshow</h2>
+        <p>This slideshow automatically transitions between images every 3 seconds.</p>
+        <div class="slideshow">
+            <div class="slides">
+                <div class="slide">
+                    <img src="image1.jpg" alt="Slide 1">
+                    <div class="caption">Image 1</div>
+                </div>
+                <div class="slide">
+                    <img src="image2.jpg" alt="Slide 2">
+                    <div class="caption">Image 2</div>
+                </div>
+                <div class="slide">
+                    <img src="image3.jpg" alt="Slide 3">
+                    <div class="caption">Image 3</div>
+                </div>
+                <div class="slide">
+                    <img src="image4.png" alt="Slide 4">
+                    <div class="caption">Image 4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for enlarged images -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Enlarged Image">
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function (event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

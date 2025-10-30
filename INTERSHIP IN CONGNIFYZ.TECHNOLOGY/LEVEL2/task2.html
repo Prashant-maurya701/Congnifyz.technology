@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Task 2: Responsive Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Navigation Menu */
+        nav {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            border: 2px solid #ffd700;
+            margin: 10px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .col:hover {
+            transform: translateY(-5px);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(45deg, #ff6b6b, #ffa726);
+                padding: 10px 0;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+
+            .col {
+                margin: 10px 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .col {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Level 2 Task 2: Responsive Design</h1>
+
+        <h2>Task 1: Responsive Webpage with Media Queries</h2>
+        <div class="row">
+            <div class="col">
+                <h3>Column 1</h3>
+                <p>This column adapts to different screen sizes using CSS media queries. On larger screens, columns are
+                    side by side. On smaller screens, they stack vertically.</p>
+            </div>
+            <div class="col">
+                <h3>Column 2</h3>
+                <p>This is another responsive column. The layout changes based on the screen width to ensure optimal
+                    viewing on all devices.</p>
+            </div>
+            <div class="col">
+                <h3>Column 3</h3>
+                <p>The third column also adjusts its layout. Media queries make this webpage mobile-friendly and
+                    tablet-friendly.</p>
+            </div>
+        </div>
+
+        <h2>Task 2: Mobile-Friendly Navigation Menu</h2>
+        <p>The navigation menu above collapses into a hamburger menu on smaller screens. Click the hamburger icon to
+            toggle the menu visibility.</p>
+
+        <h2>Level 2 Image</h2>
+        <div style="text-align: center; margin: 20px 0;">
+            <img src="prashant.png" alt="Prashant Image"
+                style="max-width: 100%; height: auto; border: 2px solid #ffd700; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+
+</html>

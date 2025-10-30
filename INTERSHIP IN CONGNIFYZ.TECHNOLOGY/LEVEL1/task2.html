@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: lightcyan;
+        }
+
+        h1 {
+            color: darkred;
+            text-align: center;
+        }
+
+        .task {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: lavender;
+            border: 2px solid indigo;
+        }
+
+        button {
+            background-color: orange;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid teal;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Tasks</h1>
+
+    <div class="task">
+        <h2>Task 1: Color Changing Button</h2>
+        <button id="colorButton">Click me to change color</button>
+    </div>
+
+    <div class="task">
+        <h2>Task 2: Greeting Alert</h2>
+        <button onclick="showGreeting()">Show Greeting</button>
+    </div>
+
+    <div class="task">
+        <h2>Task 3: Basic Calculator</h2>
+        <input type="number" id="num1" placeholder="Enter first number">
+        <input type="number" id="num2" placeholder="Enter second number">
+        <button onclick="addNumbers()">Add</button>
+        <p id="result"></p>
+    </div>
+
+    <div class="task">
+        <h2>Level 1 Image</h2>
+        <img src="prashant.png" alt="Prashant Image"
+            style="max-width: 100%; height: auto; border: 2px solid indigo; border-radius: 10px;">
+    </div>
+
+    <script>
+        // Task 1: Color Changing Button
+        const colorButton = document.getElementById('colorButton');
+        colorButton.addEventListener('click', function () {
+            const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            colorButton.style.backgroundColor = randomColor;
+        });
+
+        // Task 2: Greeting Alert
+        function showGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting;
+            if (hour < 12) {
+                greeting = "Good morning!";
+            } else if (hour < 18) {
+                greeting = "Good afternoon!";
+            } else {
+                greeting = "Good evening!";
+            }
+            alert(greeting);
+        }
+
+        // Task 3: Basic Calculator
+        function addNumbers() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').textContent = "Please enter valid numbers.";
+            } else {
+                const sum = num1 + num2;
+                document.getElementById('result').textContent = "Result: " + sum;
+            }
+        }
+    </script>
+</body>
+
+</html>

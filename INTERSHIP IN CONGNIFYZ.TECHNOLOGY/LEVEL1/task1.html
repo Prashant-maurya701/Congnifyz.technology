@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: lightblue;
+        }
+
+        nav {
+            background-color: blue;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: red;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+            text-align: center;
+            color: green;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 200px;
+            height: auto;
+            border: 2px solid red;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid blue;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid green;
+        }
+
+        input[type="submit"] {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h1>Welcome to My Webpage</h1>
+    <p>This is a simple webpage with a heading, a paragraph, an image, and a form. There's also a navigation menu at the
+        top.</p>
+    <img src="prashant.png" alt="Prashant Image">
+
+    <form action="#" method="post">
+        <input type="text" name="inputField" placeholder="Type something here" required>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
